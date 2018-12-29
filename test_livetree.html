@@ -1,0 +1,89 @@
+<html>
+
+<head>
+    <!-- TODO universal load -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/test_livetree.css">
+</head>
+
+<body>
+
+    <div class="live-tree-container">
+        <ul class="live-list-tree">
+            <li>tree</li>
+            <ul>
+                <li>topic1</li>
+                <ul>
+                    <li>branch1</li>
+                    <li>branch2</li>
+                    <li>branch3</li>
+                    <ul>
+                        <li>sub1</li>
+                        <li>sub2</li>
+                    </ul>
+                </ul>
+                <li>topic2</li>
+                <ul>
+                    <li>branch4</li>
+                    <ul>
+                        <li>sub3</li>
+                    </ul>
+                    <li>branch5</li>
+                </ul>
+            </ul>
+        </ul>
+        <ol class="live-list-tree">
+            <li>tree</li>
+            <ol>
+                <li>topic1</li>
+                <ol>
+                    <li>branch1</li>
+                    <li>branch2</li>
+                    <li>branch3</li>
+                    <ol>
+                        <li>sub1</li>
+                        <li>sub2</li>
+                    </ol>
+                </ol>
+                <li>topic2</li>
+                <ol>
+                    <li>branch4</li>
+                    <ol>
+                        <li>sub3</li>
+                    </ol>
+                    <li>branch5</li>
+                </ol>
+            </ol>
+        </ol>
+        <dl class="live-list-tree">
+            <dd>tree</dd>
+            <dl>
+                <dd>topic1</dd>
+                <dl>
+                    <dd>branch1</dd>
+                    <dd>branch2</dd>
+                    <dd>branch3</dd>
+                    <dl>
+                        <dd>sub1</dd>
+                        <dd>sub2</dd>
+                    </dl>
+                </dl>
+                <dd>topic2</dd>
+                <dl>
+                    <dd>branch4</dd>
+                    <dl>
+                        <dd>sub3</dd>
+                    </dl>
+                    <dd>branch5</dd>
+                </dl>
+            </dl>
+        </dl>
+
+    </div>
+
+    <!-- TODO load dependencies -->
+    <script src="js3rdparty/jsplumb.js "></script>
+    <script src="js/livetree.js "></script>
+</body>
+
+</html>

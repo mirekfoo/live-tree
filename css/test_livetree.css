@@ -1,0 +1,78 @@
+/* ========================================
+    list tree alignments
+   ======================================== */
+:root {
+    --live-tree-level-indent: 4em;
+}
+.live-tree-level-1 { margin-left: var(--live-tree-level-indent); }
+.live-tree-level-2 { margin-left: calc(2*var(--live-tree-level-indent)); }
+.live-tree-level-3 { margin-left: calc(3*var(--live-tree-level-indent)); }
+
+/* ========================================
+    static list tree node styling
+   ======================================== */
+.live-tree-node {
+    
+    /* dimensions */
+    width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;    
+    
+    /* margins */
+    margin-bottom: 0.1em;
+    padding:0.5em;	    
+    
+    /* colors */
+    background-color:white;
+    color:black;
+
+    /* alignment */
+    text-align:center;
+    align-items: center;
+    justify-content: center;
+
+    /* border */
+    border: medium solid;
+    border-radius:0.5em;
+    
+    /* shadow */
+    box-shadow: 2px 2px 19px #aaa;
+    -o-box-shadow: 2px 2px 19px #aaa;
+    -webkit-box-shadow: 2px 2px 19px #aaa;
+    -moz-box-shadow: 2px 2px 19px #aaa;
+    -moz-border-radius:0.5em;
+    -webkit-transition: -webkit-box-shadow 0.15s ease-in;
+    -moz-transition: -moz-box-shadow 0.15s ease-in;
+    -o-transition: -o-box-shadow 0.15s ease-in;
+    transition: box-shadow 0.15s ease-in;
+    
+    /* display */
+    z-index:24;
+    display:flex;
+    cursor:pointer;    
+
+}
+
+/* ========================================
+    on hover list tree node styling
+   ======================================== */
+.live-tree-node:hover, .live-tree-node.jtk-source-hover, .live-tree-node.jtk-target-hover {
+    border: medium solid orange;
+    color:orange;
+    box-shadow: 2px 2px 19px #444;
+    -o-box-shadow: 2px 2px 19px #444;
+    -webkit-box-shadow: 2px 2px 19px #444;
+    -moz-box-shadow: 2px 2px 19px #fff;
+    opacity:0.9;    
+}
+
+
+/* ========================================
+    on expand /collapse list tree node styling
+   ======================================== */
+
+.live-tree-group-nested-items {
+    /*--display: none;*/
+}
+
+.live-tree-group-expanded {
+    display: block;
+}
