@@ -5498,10 +5498,14 @@
 
             return managedElements[id];
         };
-
-        var _unmanage = function(id) {
+		// expose unmanage() to allow re-register items and thus update their positions
+        var _unmanage = _currentInstance.unmanage = function(id) {
             if (managedElements[id]) {
                 delete managedElements[id];
+				// delete other cached offset info too ...
+				delete offsets[id];
+				delete sizes[id];
+				delete offsetTimestamps[id];
                 _currentInstance.fire("unmanageElement", id);
             }
         };
