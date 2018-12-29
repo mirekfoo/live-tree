@@ -87,6 +87,18 @@ function findLiveTree(element) {
 
 //////////////// live-tree runtime /////////////////
 
+// unregister all nodes to allow update their positions
+function unregister_live_tree_nodes(tree, nodes) {
+    // nodes - string list
+    nodes.forEach(function (node_i) {
+        if ((typeof node_i) == "string") {
+            tree.instance.unmanage(node_i);
+        } else {
+            unregister_live_tree_nodes(tree, node_i);
+        }
+    });    
+}
+
 function live_tree_onclick_action(ev) {
 
     var nested_item = findListNestedElement(this);
@@ -94,13 +106,14 @@ function live_tree_onclick_action(ev) {
     nested_item.classList.toggle(live_tree_group_expanded_class_name);
 
     console.assert(this.classList.contains(live_tree_node_group_ctrl_class_name));
-    this.classList.toggle(live_tree_node_group_ctrl_expanded_class_name); // toggle exapan/collapse the group
+    this.classList.toggle(live_tree_node_group_ctrl_expanded_class_name); // toggle expand/collapse the group
 
     ev.stopPropagation();
 
     var tree = findLiveTree(this);
     // re-construct live tree again
     tree.instance.selectEndpoints().delete();
+    unregister_live_tree_nodes(tree,tree.nodes);
     reconnect_live_list_tree(tree);
 }
 
@@ -178,7 +191,7 @@ function add_live_tree_item_attribs(tree, parent_item, live_items) {
 
     var parent_item_el = $("#" + parent_item);
     parent_item_el.addClass(live_tree_node_group_ctrl_class_name); // mark group ctrl item
-    //--parent_item_el.click(live_tree_onclick_action); // register group ctrl item onclick action
+    parent_item_el.click(live_tree_onclick_action); // register group ctrl item onclick action
 
     var prev_item;
     live_items.forEach(function (live_item) {
@@ -212,9 +225,9 @@ function make_live_tree_connects(tree, parent_item, live_items) {
 
     // set start anchor for parent_item
     make_jsplumb_item_endpoints(tree, "#" + parent_item, tree.anchors[0]);
-///*
+//--/*
     var list_group_item = $(findListNestedElement(parent_item_el.get(0)));
-    //--if (list_group_item.hasClass(live_tree_group_expanded_class_name)) { // connect only visible (expanded) items
+    /*//--*/if (list_group_item.hasClass(live_tree_group_expanded_class_name)) { // connect only visible (expanded) items
 
         var prev_item;
         live_items.forEach(function (live_item) {
@@ -228,8 +241,8 @@ function make_live_tree_connects(tree, parent_item, live_items) {
                 make_live_tree_connects(tree, prev_item, live_item);
             }
         });
-    //--}
-//*/    
+    /*//--*/}
+//--*/    
 }
 
 function connect_live_tree(tree, live_tree) {

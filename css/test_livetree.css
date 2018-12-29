@@ -70,7 +70,7 @@
    ======================================== */
 
 .live-tree-group-nested-items {
-    /*--display: none;*/
+    display: none;
 }
 
 .live-tree-group-expanded {
