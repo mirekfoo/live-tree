@@ -224,11 +224,14 @@ function make_live_tree_connects(tree, parent_item, live_items) {
     //parent_item_el.click(live_tree_onclick_action); // register group ctrl item onclick action
 
     // set start anchor for parent_item
-    make_jsplumb_item_endpoints(tree, "#" + parent_item, tree.anchors[0]);
-//--/*
-    var list_group_item = $(findListNestedElement(parent_item_el.get(0)));
-    /*//--*/if (list_group_item.hasClass(live_tree_group_expanded_class_name)) { // connect only visible (expanded) items
+    //make_jsplumb_item_endpoints(tree, "#" + parent_item, tree.anchors[0]);
 
+    var list_group_item = $(findListNestedElement(parent_item_el.get(0)));
+    if (list_group_item.hasClass(live_tree_group_expanded_class_name)) { // connect only visible (expanded) items
+
+        // set start anchor for parent_item
+        make_jsplumb_item_endpoints(tree, "#" + parent_item, tree.anchors[0]);
+        
         var prev_item;
         live_items.forEach(function (live_item) {
             if ((typeof live_item) == "string") {
@@ -241,8 +244,7 @@ function make_live_tree_connects(tree, parent_item, live_items) {
                 make_live_tree_connects(tree, prev_item, live_item);
             }
         });
-    /*//--*/}
-//--*/    
+    }
 }
 
 function connect_live_tree(tree, live_tree) {

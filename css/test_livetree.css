@@ -69,6 +69,31 @@
     on expand /collapse list tree node styling
    ======================================== */
 
+/* add same ::after content as for .live-tree-node-group-ctrl (but in white) to align node sizes */
+.live-tree-node::after {
+    content: "\25B6"; /* filled triangle symbol */
+    color: white;
+    display: inline-block;
+    margin-left: 6px;
+}
+
+.live-tree-node-group-ctrl::after {
+    content: "\25B6"; /* filled triangle symbol */
+    color: black;
+    display: inline-block;
+    margin-left: 6px;
+}
+
+.live-tree-node-group-ctrl-expanded::after {
+/*    
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+*/
+    content: "\25B7"; /* empty triangle symbol */
+    color:orange;
+}
+
 .live-tree-group-nested-items {
     display: none;
 }
@@ -76,3 +101,4 @@
 .live-tree-group-expanded {
     display: block;
 }
+
